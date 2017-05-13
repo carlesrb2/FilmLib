@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nombre_asc"
+        android:orderInCategory="100"
+        android:title="@string/nombre_asc"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/nombre_desc"
+        android:orderInCategory="100"
+        android:title="@string/nombre_desc"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/genero_asc"
+        android:orderInCategory="100"
+        android:title="@string/genero_asc"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/genero_desc"
+        android:orderInCategory="100"
+        android:title="@string/genero_desc"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/fecha_asc"
+        android:orderInCategory="100"
+        android:title="@string/fecha_asc"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/fecha_desc"
+        android:orderInCategory="100"
+        android:title="@string/fecha_desc"
+        app:showAsAction="never" />
+</menu>

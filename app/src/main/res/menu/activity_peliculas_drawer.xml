@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_peliculas"
+            android:icon="@drawable/ic_pelicula"
+            android:title="@string/peliculas" />
+        <item
+            android:id="@+id/nav_series"
+            android:icon="@drawable/ic_tv"
+            android:title="@string/series" />
+
+    </group>
+
+    <item android:title="@string/menu_listas">
+        <menu>
+            <item
+                android:id="@+id/nav_favoritas"
+                android:icon="@drawable/ic_star"
+                android:title="@string/favoritas" />
+            <item
+                android:id="@+id/nav_vistas"
+                android:icon="@drawable/ic_eye"
+                android:title="@string/vistas" />
+        </menu>
+    </item>
+
+</menu>
