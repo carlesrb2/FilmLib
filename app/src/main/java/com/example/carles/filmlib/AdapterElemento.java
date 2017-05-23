@@ -20,6 +20,11 @@ public class AdapterElemento extends BaseAdapter {
     protected Activity activity;
     protected ArrayList<Elemento> arrayElementos;
 
+    public AdapterElemento(Activity activity, ArrayList<Elemento> arrayElementos) {
+        this.activity = activity;
+        this.arrayElementos = arrayElementos;
+    }
+
     @Override
     public int getCount() {
         return arrayElementos.size();
@@ -27,12 +32,12 @@ public class AdapterElemento extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return arrayElementos.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -44,14 +49,24 @@ public class AdapterElemento extends BaseAdapter {
             v = inf.inflate(R.layout.list_element, null);
         }
 
-        Elemento dir = arrayElementos.get(position);
+        Elemento ele = arrayElementos.get(position);
 
         TextView titulo = (TextView) v.findViewById(R.id.titulo);
-        titulo.setText(dir.getTitulo());
+        titulo.setText(ele.getTitulo());
+
+        TextView genero = (TextView) v.findViewById(R.id.genero);
+        genero.setText(ele.getGenero());
 
         TextView estreno = (TextView) v.findViewById(R.id.estreno);
-        estreno.setText("(" + dir.getEstreno() + ")");
+        estreno.setText("(" + ele.getEstreno() + ")");
 
+        if (ele.getTipo().equals("0")) {
+            TextView directortemp = (TextView) v.findViewById(R.id.directortemp);
+            directortemp.setText(ele.getDirector());
+        } else {
+            TextView directortemp = (TextView) v.findViewById(R.id.directortemp);
+            directortemp.setText(ele.getTemporadas() + " Temporadas");
+        }
 
 
         return v;

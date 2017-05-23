@@ -6,14 +6,15 @@ package com.example.carles.filmlib;
 
 public class Elemento {
 
-    private int id;
+    private String id;
+    private String tipo;
     private String titulo;
     private String genero;
     private String director;
-    private int temporadas;
-    private int estreno;
+    private String temporadas;
+    private String estreno;
 
-    public Elemento(int id, String titulo, String genero, String director, int temporadas, int estreno) {
+    public Elemento(String id, String titulo, String genero, String director, String temporadas, String estreno) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
@@ -23,6 +24,14 @@ public class Elemento {
     }
 
     public Elemento() {
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getTitulo() {
@@ -49,27 +58,40 @@ public class Elemento {
         this.director = director;
     }
 
-    public int getTemporadas() {
+    public String getTemporadas() {
         return temporadas;
     }
 
-    public void setTemporadas(int temporadas) {
+    public void setTemporadas(String temporadas) {
         this.temporadas = temporadas;
     }
 
-    public int getEstreno() {
+    public String getEstreno() {
         return estreno;
     }
 
-    public void setEstreno(int estreno) {
+    public void setEstreno(String estreno) {
         this.estreno = estreno;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    @Override
+    public String toString() {
+        return "Elemento{" +
+                "id='" + id + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", genero='" + genero + '\'' +
+                ", director='" + director + '\'' +
+                ", temporadas='" + temporadas + '\'' +
+                ", estreno='" + estreno + '\'' +
+                '}';
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 }

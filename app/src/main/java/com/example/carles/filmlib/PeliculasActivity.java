@@ -1,5 +1,7 @@
 package com.example.carles.filmlib;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +14,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class PeliculasActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
+public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask.Listener, AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView mListView;
+
+    public static final String URL = "http://162.243.214.157/android/getPeliculas.php";
+
+    private List<HashMap<String, String>> mElementosMapList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +62,41 @@ public class PeliculasActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mListView = (ListView) findViewById(R.id.mainList);
+        new LoadJSONTask(this).execute(URL);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        Toast.makeText(this, mElementosMapList.get(i).get("titulo"),Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLoaded(List<Elemento> elementosList) {
+        ArrayList<Elemento> aElementos = new ArrayList<Elemento>();
+        for (Elemento ele : elementosList) {
+
+            aElementos.add(ele);
+        }
+
+        loadListView();
+        AdapterElemento adapter = new AdapterElemento(this, aElementos);
+
+        mListView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onError() {
+
+        Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadListView() {
+
+
+
     }
 
     @Override
