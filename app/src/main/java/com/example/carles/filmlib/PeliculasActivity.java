@@ -34,7 +34,7 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
 
     private ListView mListView;
 
-    public static final String URL = "http://162.243.214.157/android/getPeliculas.php";
+    public static  String URL = "http://162.243.214.157/android/getPeliculas.php";
 
     private List<HashMap<String, String>> mElementosMapList = new ArrayList<>();
 

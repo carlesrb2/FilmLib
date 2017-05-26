@@ -23,6 +23,12 @@
     <string name="genero_desc">Genero - DESC</string>
     <string name="fecha_asc">Fecha - ASC</string>
     <string name="fecha_desc">Fecha - DESC</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="edit_titulo">Titulo</string>
+    <string name="edit_genero">Genero</string>
+    <string name="edit_estreno">Estreno</string>
+    <string name="edit_temporadas">Temporadas</string>
+    <string name="edit_director">Director</string>
 
 
 </resources>
