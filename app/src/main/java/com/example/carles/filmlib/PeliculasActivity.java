@@ -30,7 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask.Listener, AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask.Listener, NavigationView.OnNavigationItemSelectedListener {
 
     private ListView mListView;
 
@@ -67,11 +67,6 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
         new LoadJSONTask(this).execute(URL);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-        Toast.makeText(this, mElementosMapList.get(i).get("titulo"),Toast.LENGTH_LONG).show();
-    }
 
     @Override
     public void onLoaded(List<Elemento> elementosList) {
@@ -85,6 +80,7 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
         AdapterElemento adapter = new AdapterElemento(this, aElementos);
 
         mListView.setAdapter(adapter);
+
     }
 
     @Override
