@@ -34,7 +34,10 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
 
     private ListView mListView;
 
-    public static  String URL = "http://162.243.214.157/android/getPeliculas.php";
+
+    public static String tipo = "0";
+
+    public static String URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=0&direccion=1";
 
     private List<HashMap<String, String>> mElementosMapList = new ArrayList<>();
 
@@ -92,7 +95,6 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
     private void loadListView() {
 
 
-
     }
 
     @Override
@@ -121,7 +123,33 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.nombre_asc) {
-            return true;
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=1&direccion=1";
+            new LoadJSONTask(this).execute(URL);
+        }
+
+        if (id == R.id.genero_asc) {
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=3&direccion=1";
+            new LoadJSONTask(this).execute(URL);
+        }
+
+        if (id == R.id.fecha_asc) {
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=2&direccion=1";
+            new LoadJSONTask(this).execute(URL);
+        }
+
+        if (id == R.id.nombre_desc) {
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=1&direccion=0";
+            new LoadJSONTask(this).execute(URL);
+        }
+
+        if (id == R.id.genero_desc) {
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=3&direccion=0";
+            new LoadJSONTask(this).execute(URL);
+        }
+
+        if (id == R.id.fecha_desc) {
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=2&direccion=0";
+            new LoadJSONTask(this).execute(URL);
         }
 
         return super.onOptionsItemSelected(item);
@@ -134,8 +162,14 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
         int id = item.getItemId();
 
         if (id == R.id.nav_peliculas) {
-            // Handle the camera action
+            tipo = "0";
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=0&direccion=1";
+            new LoadJSONTask(this).execute(URL);
         } else if (id == R.id.nav_series) {
+            tipo = "1";
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=0&direccion=1";
+
+            new LoadJSONTask(this).execute(URL);
 
         } else if (id == R.id.nav_favoritas) {
 
