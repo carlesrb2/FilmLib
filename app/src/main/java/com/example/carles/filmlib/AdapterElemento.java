@@ -85,6 +85,7 @@ public class AdapterElemento extends BaseAdapter implements View.OnClickListener
         Log.i("Click", e.getTitulo());
         Intent i = new Intent(activity, EditActivity.class);
         i.putExtra("id", e.getId());
+        i.putExtra("tipo", e.getTipo());
         activity.startActivity(i);
 
 

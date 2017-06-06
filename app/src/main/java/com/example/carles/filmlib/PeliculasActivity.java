@@ -37,7 +37,7 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
 
     public static String tipo = "0";
 
-    public static String URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=0&direccion=1";
+    private static String URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=0&direccion=1";
 
     private List<HashMap<String, String>> mElementosMapList = new ArrayList<>();
 
@@ -70,6 +70,12 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
         new LoadJSONTask(this).execute(URL);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        new LoadJSONTask(this).execute(URL);
+
+    }
 
     @Override
     public void onLoaded(List<Elemento> elementosList) {
@@ -89,6 +95,7 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
     @Override
     public void onError() {
 
+
         Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
     }
 
@@ -100,6 +107,7 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {

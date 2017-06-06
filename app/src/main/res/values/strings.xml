@@ -29,6 +29,8 @@
     <string name="edit_estreno">Estreno</string>
     <string name="edit_temporadas">Temporadas</string>
     <string name="edit_director">Director</string>
+    <string name="editar_save">Guardar</string>
+    <string name="editar_delete">Eliminar</string>
 
 
 </resources>
