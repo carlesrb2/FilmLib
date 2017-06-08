@@ -17,7 +17,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditActivity extends AppCompatActivity implements LoadJSONTask.Listener,  PostJSONTask.Listener {
+public class EditActivity extends AppCompatActivity implements LoadJSONTask.Listener, PostJSONTask.Listener {
 
     private String URL = "";
     private int tipo = 0;
@@ -35,9 +35,13 @@ public class EditActivity extends AppCompatActivity implements LoadJSONTask.List
         Bundle b = iin.getExtras();
         tipo = b.getInt("tipo");
         bdid = b.getString("id");
-        Log.i("ID  --" , b.getString("id"));
+        Log.i("ID  --", b.getString("id"));
         String URL = "http://162.243.214.157/android/getElemento.php?id=" + b.get("id");
-        new LoadJSONTask(this).execute(URL);
+        if (!bdid.equals("0")) {
+            new LoadJSONTask(this).execute(URL);
+        } else {
+            limpiarCampos();
+        }
     }
 
     @Override
@@ -125,5 +129,37 @@ public class EditActivity extends AppCompatActivity implements LoadJSONTask.List
     public void onError() {
 
         Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+    }
+
+    public void limpiarCampos() {
+        EditText txtTitulo = (EditText) findViewById(R.id.txtTitulo);
+        txtTitulo.setText("");
+
+        EditText txtGenero = (EditText) findViewById(R.id.txtGenero);
+        txtGenero.setText("");
+
+        EditText txtEstreno = (EditText) findViewById(R.id.txtEstreno);
+        txtEstreno.setText("");
+        EditText txtDirector = (EditText) findViewById(R.id.txtDirector);
+        EditText txtTemporadas = (EditText) findViewById(R.id.txtTemporadas);
+
+        TextView lbDirector = (TextView) findViewById(R.id.lbDirector);
+        TextView lbTemporadas = (TextView) findViewById(R.id.lbTemporadas);
+
+        if (tipo == 0) {
+            txtDirector.setText("");
+            txtTemporadas.setVisibility(View.INVISIBLE);
+            txtDirector.setVisibility(View.VISIBLE);
+            lbDirector.setVisibility(View.VISIBLE);
+            lbTemporadas.setVisibility(View.INVISIBLE);
+
+
+        } else {
+            txtTemporadas.setText("");
+            txtTemporadas.setVisibility(View.VISIBLE);
+            txtDirector.setVisibility(View.INVISIBLE);
+            lbDirector.setVisibility(View.INVISIBLE);
+            lbTemporadas.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.carles.filmlib;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -52,8 +53,10 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(getBaseContext(), EditActivity.class);
+                i.putExtra("id", "0");
+                i.putExtra("tipo", Integer.parseInt(tipo));
+                startActivity(i);
             }
         });
 
@@ -180,8 +183,14 @@ public class PeliculasActivity extends AppCompatActivity implements LoadJSONTask
             new LoadJSONTask(this).execute(URL);
 
         } else if (id == R.id.nav_favoritas) {
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=0&direccion=1&favorita=1";
+
+            new LoadJSONTask(this).execute(URL);
 
         } else if (id == R.id.nav_vistas) {
+            URL = "http://162.243.214.157/android/getPeliculas.php?tipo=" + tipo + "&order=0&direccion=1&vista=1";
+
+            new LoadJSONTask(this).execute(URL);
 
         }
 

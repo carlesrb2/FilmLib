@@ -3,6 +3,7 @@ package com.example.carles.filmlib;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,20 @@ public class AdapterElemento extends BaseAdapter implements View.OnClickListener
 
         Elemento ele = arrayElementos.get(position);
 
+        ImageView iFav = (ImageView) v.findViewById(R.id.imgFav);
+        ImageView iView = (ImageView) v.findViewById(R.id.imgView);
+
+        if (ele.getFavorita().equals("1")) {
+            iFav.setVisibility(View.VISIBLE);
+        } else {
+            iFav.setVisibility(View.INVISIBLE);
+        }
+
+        if (ele.getVista().equals("1")) {
+            iView.setVisibility(View.VISIBLE);
+        } else {
+            iView.setVisibility(View.INVISIBLE);
+        }
         TextView titulo = (TextView) v.findViewById(R.id.titulo);
         titulo.setText(ele.getTitulo());
 

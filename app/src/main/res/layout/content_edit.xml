@@ -151,26 +151,4 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1" />
 
-    <ImageView
-        android:id="@+id/imgVista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        app:layout_constraintTop_toBottomOf="@+id/txtDirector"
-        app:srcCompat="@drawable/ic_eye"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginLeft="156dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <ImageView
-        android:id="@+id/imgFav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_star"
-        app:layout_constraintLeft_toRightOf="@+id/imgVista"
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtDirector" />
 </android.support.constraint.ConstraintLayout>

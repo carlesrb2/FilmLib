@@ -13,17 +13,42 @@ public class Elemento {
     private String director;
     private String temporadas;
     private String estreno;
+    private String vista;
+    private String favorita;
 
-    public Elemento(String id, String titulo, String genero, String director, String temporadas, String estreno) {
+    public Elemento(String id, String tipo, String titulo, String genero, String director, String temporadas, String estreno, String vista, String favorita) {
         this.id = id;
+        this.tipo = tipo;
         this.titulo = titulo;
         this.genero = genero;
         this.director = director;
         this.temporadas = temporadas;
         this.estreno = estreno;
+        this.vista = vista;
+        this.favorita = favorita;
     }
 
-    public Elemento() {
+    @Override
+    public String toString() {
+        return "Elemento{" +
+                "id='" + id + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", genero='" + genero + '\'' +
+                ", director='" + director + '\'' +
+                ", temporadas='" + temporadas + '\'' +
+                ", estreno='" + estreno + '\'' +
+                ", vista='" + vista + '\'' +
+                ", favorita='" + favorita + '\'' +
+                '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTipo() {
@@ -74,24 +99,19 @@ public class Elemento {
         this.estreno = estreno;
     }
 
-    public String getId() {
-        return id;
+    public String getVista() {
+        return vista;
     }
 
-    @Override
-    public String toString() {
-        return "Elemento{" +
-                "id='" + id + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", genero='" + genero + '\'' +
-                ", director='" + director + '\'' +
-                ", temporadas='" + temporadas + '\'' +
-                ", estreno='" + estreno + '\'' +
-                '}';
+    public void setVista(String vista) {
+        this.vista = vista;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getFavorita() {
+        return favorita;
+    }
+
+    public void setFavorita(String favorita) {
+        this.favorita = favorita;
     }
 }
